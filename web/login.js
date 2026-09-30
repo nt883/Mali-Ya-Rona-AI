@@ -1,17 +1,3 @@
-const STORAGE_KEY = "mali.actor_id";
-
-function getStoredActorId() {
-    return localStorage.getItem(STORAGE_KEY) || "";
-}
-
-function setStoredActorId(id) {
-    localStorage.setItem(STORAGE_KEY, id);
-}
-
-function clearStoredActorId() {
-    localStorage.removeItem(STORAGE_KEY);
-}
-
 let actors = [];
 
 function showError(message) {
@@ -38,12 +24,13 @@ async function loadActors() {
     select.innerHTML = `<option value="">Select an official…</option>`;
 
     actors
-        .filter(actor => actor.profile_type !== "citizen")
-        .filter(actor => actor.profile_type !== "supplier")
+        .filter(a => a.profile_type !== "citizen")
+        .filter(a => a.profile_type !== "supplier")
         .forEach(actor => {
             const option = document.createElement("option");
             option.value = actor.actor_id;
-            option.textContent = `${actor.actor_id} — ${actor.display_name} (${actor.role})`;
+            option.textContent =
+                `${actor.actor_id} — ${actor.display_name} (${actor.role})`;
             select.appendChild(option);
         });
 }
@@ -72,16 +59,15 @@ function renderPreview() {
 }
 
 function signIn() {
-    const select = document.getElementById("actorSelect");
-    const actorId = select.value;
+    const actorId = document.getElementById("actorSelect").value;
 
     if (!actorId) {
         showError("Select an official first.");
         return;
     }
 
-    setStoredActorId(actorId);
-    window.location.href = "/govbank";
+    window.location.href =
+        `/govbank?actor=${encodeURIComponent(actorId)}`;
 }
 
 document.getElementById("actorSelect").addEventListener("change", () => {
