@@ -1,0 +1,74 @@
+under funding network
+=====================
+
+@app.get("/api/money-flow")
+def money_flow():
+
+    data = get_data()
+
+    flows = data.get(
+        "money_flows",
+        []
+    )
+
+    if not flows:
+
+        return {
+            "available": False,
+            "message":
+                "No funding-flow data exists."
+        }
+
+    flow = flows[0]
+
+    transfers = []
+
+    for transfer in flow.get(
+        "transfers",
+        []
+    ):
+
+        sent = transfer.get(
+            "amount_sent_cents",
+            0
+        )
+
+        received = transfer.get(
+            "amount_received_cents",
+            0
+        )
+
+        difference = (
+            sent - received
+        )
+
+        transfers.append({
+            **transfer,
+
+            "difference_cents":
+                difference,
+
+            "status":
+                (
+                    "review"
+                    if difference != 0
+                    else "matched"
+                )
+        })
+
+    return {
+        "available": True,
+        "id": flow.get("id"),
+        "title": flow.get("title"),
+        "currency": flow.get("currency"),
+        "as_of": flow.get("as_of"),
+        "route_note": flow.get(
+            "route_note"
+        ),
+        "nodes": flow.get(
+            "nodes",
+            []
+        ),
+        "transfers":
+            transfers
+    }

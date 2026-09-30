@@ -1,0 +1,572 @@
+{
+  "schema_version": 1,
+  "currency": "ZAR",
+  "accounts": [
+    {
+      "account_id": "GB-NAT-001",
+      "institution_id": "NAT-FINANCE",
+      "name": "National Public Finance Account",
+      "level": "national",
+      "location_code": "ZA",
+      "balance_cents": 60000000,
+      "status": "active"
+    },
+    {
+      "account_id": "GB-PROV-LIM-001",
+      "institution_id": "PROV-LIM",
+      "name": "Limpopo Provincial Public Finance Account",
+      "level": "province",
+      "location_code": "LP",
+      "balance_cents": 45000000,
+      "status": "active"
+    },
+    {
+      "account_id": "GB-DIST-VHE-001",
+      "institution_id": "DIST-VHE",
+      "name": "Vhembe District Public Finance Account",
+      "level": "district",
+      "location_code": "VHE",
+      "balance_cents": 0,
+      "status": "active"
+    },
+    {
+      "account_id": "GB-MUN-THU-001",
+      "institution_id": "MUN-THU",
+      "name": "Thulamela Municipality Public Finance Account",
+      "level": "municipality",
+      "location_code": "THU",
+      "balance_cents": 0,
+      "status": "active"
+    }
+  ],
+  "allocations": [
+    {
+      "allocation_id": "ALLOC-3C06DC74DF",
+      "title": "Limpopo Housing and Shelter Maintenance",
+      "source_account_id": "GB-NAT-001",
+      "authorised_amount_cents": 20000000,
+      "route_movement_cents": 15000000,
+      "service_disbursed_cents": 0,
+      "service_sector": "housing",
+      "location_scope": "Vhembe",
+      "project_id": null,
+      "allowed_edges": [
+        "national>province",
+        "province>district",
+        "district>municipality",
+        "national>municipality",
+        "municipality>supplier"
+      ],
+      "status": "active",
+      "created_by": "N-ZA-000001",
+      "created_at": "2026-09-29T02:30:48+00:00"
+    },
+    {
+      "allocation_id": "ALLOC-8615D2989E",
+      "title": "Limpopo Water Infrastructure Allocation",
+      "source_account_id": "GB-NAT-001",
+      "authorised_amount_cents": 40000000,
+      "route_movement_cents": 30000000,
+      "service_disbursed_cents": 0,
+      "service_sector": "water",
+      "location_scope": "Limpopo/Vhembe",
+      "project_id": null,
+      "allowed_edges": [
+        "national>province",
+        "province>district",
+        "district>municipality",
+        "national>municipality",
+        "municipality>supplier"
+      ],
+      "status": "active",
+      "created_by": "N-ZA-000001",
+      "created_at": "2026-09-29T02:44:40+00:00"
+    },
+    {
+      "allocation_id": "ALLOC-97B7344DED",
+      "title": "Limpopo Electricity Repairs",
+      "source_account_id": "GB-NAT-001",
+      "authorised_amount_cents": 10000000,
+      "route_movement_cents": 0,
+      "service_disbursed_cents": 0,
+      "service_sector": "electricity",
+      "location_scope": "Limpopo/Vhembe",
+      "project_id": null,
+      "allowed_edges": [
+        "national>province",
+        "province>district",
+        "district>municipality",
+        "national>municipality",
+        "municipality>supplier"
+      ],
+      "status": "active",
+      "created_by": "N-ZA-000001",
+      "created_at": "2026-09-29T03:13:25+00:00"
+    }
+  ],
+  "transactions": [
+    {
+      "transaction_id": "GBR-21D699803E1F",
+      "transaction_type": "funding_receipt",
+      "from_account_id": null,
+      "to_account_id": "GB-NAT-001",
+      "amount_cents": 20000000,
+      "source_name": "Prototype National Revenue",
+      "source_reference": "FUND-2026-001",
+      "status": "posted",
+      "initiated_by": "N-ZA-000001",
+      "approved_by": "N-ZA-000001",
+      "posted_at": "2026-09-29T02:29:01+00:00",
+      "previous_hash": null,
+      "record_hash": "806103e9add5f5a441450346a44f4b7b305e85d34068b03f092e995b0d3e5148"
+    },
+    {
+      "transaction_id": "GBT-DA7FD509F379",
+      "transaction_type": "internal_transfer",
+      "allocation_id": "ALLOC-3C06DC74DF",
+      "from_account_id": "GB-NAT-001",
+      "to_account_id": "GB-PROV-LIM-001",
+      "amount_cents": 15000000,
+      "purpose": "Housing and Sheter Maintenance",
+      "service_sector": "housing",
+      "project_id": null,
+      "public_service": true,
+      "status": "posted",
+      "policy_flags": [],
+      "initiated_by": "N-ZA-000001",
+      "approved_by": "N-ZA-000002",
+      "created_at": "2026-09-29T02:31:34+00:00",
+      "posted_at": "2026-09-29T02:32:22+00:00",
+      "previous_hash": null,
+      "record_hash": "0431e53b1664b2a5ed7176dad1af3dc9401ba1efee95ba0fb6ef596876fdf2b5"
+    },
+    {
+      "transaction_id": "GBR-FF46B3ED1940",
+      "transaction_type": "funding_receipt",
+      "from_account_id": null,
+      "to_account_id": "GB-NAT-001",
+      "amount_cents": 80000000,
+      "source_name": "Prototype National Revenue",
+      "source_reference": "FUND-2026-001",
+      "status": "posted",
+      "initiated_by": "N-ZA-000001",
+      "approved_by": "N-ZA-000001",
+      "posted_at": "2026-09-29T02:42:09+00:00",
+      "previous_hash": "0431e53b1664b2a5ed7176dad1af3dc9401ba1efee95ba0fb6ef596876fdf2b5",
+      "record_hash": "e09e14584b41c6f45ca700eefac479f2ed9940e69cf04d46203e12e26de0a09b"
+    },
+    {
+      "transaction_id": "GBT-8D316E708B2C",
+      "transaction_type": "internal_transfer",
+      "allocation_id": "ALLOC-8615D2989E",
+      "from_account_id": "GB-NAT-001",
+      "to_account_id": "GB-PROV-LIM-001",
+      "amount_cents": 30000000,
+      "purpose": "Water Infrastructure Transfer",
+      "service_sector": "water",
+      "project_id": null,
+      "public_service": true,
+      "status": "posted",
+      "policy_flags": [],
+      "initiated_by": "N-ZA-000001",
+      "approved_by": "N-ZA-000002",
+      "created_at": "2026-09-29T02:46:23+00:00",
+      "posted_at": "2026-09-29T02:47:41+00:00",
+      "previous_hash": null,
+      "record_hash": "a66cb4054e0f955ebc880f27915595528f834aef2307be279b73c78f704af0ef"
+    },
+    {
+      "transaction_id": "GBR-28C0E6502D68",
+      "transaction_type": "funding_receipt",
+      "from_account_id": null,
+      "to_account_id": "GB-NAT-001",
+      "amount_cents": 5000000,
+      "source_name": "Prototype National Revenue",
+      "source_reference": "FUND-2026-001",
+      "status": "posted",
+      "initiated_by": "N-ZA-000001",
+      "approved_by": "N-ZA-000001",
+      "posted_at": "2026-09-29T03:12:29+00:00",
+      "previous_hash": "a66cb4054e0f955ebc880f27915595528f834aef2307be279b73c78f704af0ef",
+      "record_hash": "2cbf7fab9ff9c3eab98a3ecec7d017454ea9e2ba8406be4c731bd4bb5b1d3007"
+    },
+    {
+      "transaction_id": "GBT-3B90F7B26857",
+      "transaction_type": "internal_transfer",
+      "allocation_id": "ALLOC-97B7344DED",
+      "from_account_id": "GB-NAT-001",
+      "to_account_id": "GB-NAT-001",
+      "amount_cents": 10000000,
+      "purpose": "Electricity Repairs",
+      "service_sector": "electricity",
+      "project_id": null,
+      "public_service": true,
+      "status": "pending_review",
+      "policy_flags": [
+        {
+          "code": "ROUTE_OUTSIDE_ALLOCATION",
+          "severity": "high",
+          "reason": "Transaction route is outside the authorised allocation path.",
+          "evidence": {
+            "edge": "national>national",
+            "allowed_edges": [
+              "national>province",
+              "province>district",
+              "district>municipality",
+              "national>municipality",
+              "municipality>supplier"
+            ]
+          }
+        }
+      ],
+      "initiated_by": "N-ZA-000001",
+      "approved_by": null,
+      "created_at": "2026-09-29T03:14:01+00:00",
+      "posted_at": null,
+      "previous_hash": null,
+      "record_hash": null
+    },
+    {
+      "transaction_id": "GBT-E14B826BEAD5",
+      "transaction_type": "internal_transfer",
+      "allocation_id": "ALLOC-97B7344DED",
+      "from_account_id": "GB-NAT-001",
+      "to_account_id": "GB-NAT-001",
+      "amount_cents": 10000000,
+      "purpose": "Electricity Repairs",
+      "service_sector": "electricity",
+      "project_id": null,
+      "public_service": true,
+      "status": "pending_review",
+      "policy_flags": [
+        {
+          "code": "ALLOCATION_POSITION_EXCEEDED",
+          "severity": "high",
+          "reason": "The sending institution does not currently hold enough of this allocation for the requested transfer.",
+          "evidence": {
+            "requested_cents": 10000000,
+            "available_cents": 0,
+            "incoming_cents": 0,
+            "outgoing_cents": 0,
+            "reserved_cents": 10000000
+          }
+        },
+        {
+          "code": "ROUTE_OUTSIDE_ALLOCATION",
+          "severity": "high",
+          "reason": "Transaction route is outside the authorised allocation path.",
+          "evidence": {
+            "edge": "national>national",
+            "allowed_edges": [
+              "national>province",
+              "province>district",
+              "district>municipality",
+              "national>municipality",
+              "municipality>supplier"
+            ]
+          }
+        }
+      ],
+      "initiated_by": "N-ZA-000001",
+      "approved_by": null,
+      "created_at": "2026-09-29T03:14:30+00:00",
+      "posted_at": null,
+      "previous_hash": null,
+      "record_hash": null
+    },
+    {
+      "transaction_id": "GBT-53A796C5B263",
+      "transaction_type": "internal_transfer",
+      "allocation_id": "ALLOC-97B7344DED",
+      "from_account_id": "GB-NAT-001",
+      "to_account_id": "GB-NAT-001",
+      "amount_cents": 10000000,
+      "purpose": "Electricity Repairs",
+      "service_sector": "electricity",
+      "project_id": null,
+      "public_service": true,
+      "status": "pending_review",
+      "policy_flags": [
+        {
+          "code": "ALLOCATION_POSITION_EXCEEDED",
+          "severity": "high",
+          "reason": "The sending institution does not currently hold enough of this allocation for the requested transfer.",
+          "evidence": {
+            "requested_cents": 10000000,
+            "available_cents": -10000000,
+            "incoming_cents": 0,
+            "outgoing_cents": 0,
+            "reserved_cents": 20000000
+          }
+        },
+        {
+          "code": "ROUTE_OUTSIDE_ALLOCATION",
+          "severity": "high",
+          "reason": "Transaction route is outside the authorised allocation path.",
+          "evidence": {
+            "edge": "national>national",
+            "allowed_edges": [
+              "national>province",
+              "province>district",
+              "district>municipality",
+              "national>municipality",
+              "municipality>supplier"
+            ]
+          }
+        }
+      ],
+      "initiated_by": "N-ZA-000001",
+      "approved_by": null,
+      "created_at": "2026-09-29T03:14:41+00:00",
+      "posted_at": null,
+      "previous_hash": null,
+      "record_hash": null
+    },
+    {
+      "transaction_id": "GBT-810DC3797170",
+      "transaction_type": "internal_transfer",
+      "allocation_id": "ALLOC-97B7344DED",
+      "from_account_id": "GB-NAT-001",
+      "to_account_id": "GB-DIST-VHE-001",
+      "amount_cents": 10000000,
+      "purpose": "Electricity Repairs",
+      "service_sector": "electricity",
+      "project_id": null,
+      "public_service": true,
+      "status": "pending_review",
+      "policy_flags": [
+        {
+          "code": "ALLOCATION_POSITION_EXCEEDED",
+          "severity": "high",
+          "reason": "The sending institution does not currently hold enough of this allocation for the requested transfer.",
+          "evidence": {
+            "requested_cents": 10000000,
+            "available_cents": -20000000,
+            "incoming_cents": 0,
+            "outgoing_cents": 0,
+            "reserved_cents": 30000000
+          }
+        },
+        {
+          "code": "ROUTE_OUTSIDE_ALLOCATION",
+          "severity": "high",
+          "reason": "Transaction route is outside the authorised allocation path.",
+          "evidence": {
+            "edge": "national>district",
+            "allowed_edges": [
+              "national>province",
+              "province>district",
+              "district>municipality",
+              "national>municipality",
+              "municipality>supplier"
+            ]
+          }
+        }
+      ],
+      "initiated_by": "N-ZA-000001",
+      "approved_by": null,
+      "created_at": "2026-09-29T03:16:15+00:00",
+      "posted_at": null,
+      "previous_hash": null,
+      "record_hash": null
+    },
+    {
+      "transaction_id": "GBT-6083321926E9",
+      "transaction_type": "internal_transfer",
+      "allocation_id": "ALLOC-97B7344DED",
+      "from_account_id": "GB-NAT-001",
+      "to_account_id": "GB-PROV-LIM-001",
+      "amount_cents": 10000000,
+      "purpose": "Electricity Repairs",
+      "service_sector": "electricity",
+      "project_id": null,
+      "public_service": true,
+      "status": "pending_review",
+      "policy_flags": [
+        {
+          "code": "ALLOCATION_POSITION_EXCEEDED",
+          "severity": "high",
+          "reason": "The sending institution does not currently hold enough of this allocation for the requested transfer.",
+          "evidence": {
+            "requested_cents": 10000000,
+            "available_cents": -30000000,
+            "incoming_cents": 0,
+            "outgoing_cents": 0,
+            "reserved_cents": 40000000
+          }
+        }
+      ],
+      "initiated_by": "N-ZA-000001",
+      "approved_by": null,
+      "created_at": "2026-09-29T03:16:35+00:00",
+      "posted_at": null,
+      "previous_hash": null,
+      "record_hash": null
+    }
+  ],
+  "audit_log": [
+    {
+      "event_id": "AUD-920B7A736331",
+      "actor_id": "N-ZA-000001",
+      "action": "FUNDING_RECEIVED",
+      "reference": "GBR-21D699803E1F",
+      "timestamp": "2026-09-29T02:29:01+00:00",
+      "details": {
+        "amount_cents": 20000000,
+        "account_id": "GB-NAT-001"
+      }
+    },
+    {
+      "event_id": "AUD-E373A0DD431E",
+      "actor_id": "N-ZA-000001",
+      "action": "ALLOCATION_CREATED",
+      "reference": "ALLOC-3C06DC74DF",
+      "timestamp": "2026-09-29T02:30:48+00:00",
+      "details": {
+        "amount_cents": 20000000,
+        "service_sector": "housing"
+      }
+    },
+    {
+      "event_id": "AUD-6CF2D3B5878C",
+      "actor_id": "N-ZA-000001",
+      "action": "TRANSFER_INITIATED",
+      "reference": "GBT-DA7FD509F379",
+      "timestamp": "2026-09-29T02:31:34+00:00",
+      "details": {
+        "amount_cents": 15000000,
+        "policy_flag_count": 0
+      }
+    },
+    {
+      "event_id": "AUD-88E270506D73",
+      "actor_id": "N-ZA-000002",
+      "action": "TRANSFER_POSTED",
+      "reference": "GBT-DA7FD509F379",
+      "timestamp": "2026-09-29T02:32:22+00:00",
+      "details": {
+        "amount_cents": 15000000
+      }
+    },
+    {
+      "event_id": "AUD-616F4A8B765F",
+      "actor_id": "N-ZA-000001",
+      "action": "FUNDING_RECEIVED",
+      "reference": "GBR-FF46B3ED1940",
+      "timestamp": "2026-09-29T02:42:09+00:00",
+      "details": {
+        "amount_cents": 80000000,
+        "account_id": "GB-NAT-001"
+      }
+    },
+    {
+      "event_id": "AUD-BC619459BF22",
+      "actor_id": "N-ZA-000001",
+      "action": "ALLOCATION_CREATED",
+      "reference": "ALLOC-8615D2989E",
+      "timestamp": "2026-09-29T02:44:40+00:00",
+      "details": {
+        "amount_cents": 40000000,
+        "service_sector": "water"
+      }
+    },
+    {
+      "event_id": "AUD-9F0FDEB6F8B3",
+      "actor_id": "N-ZA-000001",
+      "action": "TRANSFER_INITIATED",
+      "reference": "GBT-8D316E708B2C",
+      "timestamp": "2026-09-29T02:46:23+00:00",
+      "details": {
+        "amount_cents": 30000000,
+        "policy_flag_count": 0
+      }
+    },
+    {
+      "event_id": "AUD-C9B6541E76B2",
+      "actor_id": "N-ZA-000002",
+      "action": "TRANSFER_POSTED",
+      "reference": "GBT-8D316E708B2C",
+      "timestamp": "2026-09-29T02:47:41+00:00",
+      "details": {
+        "amount_cents": 30000000
+      }
+    },
+    {
+      "event_id": "AUD-86068A29B9BD",
+      "actor_id": "N-ZA-000001",
+      "action": "FUNDING_RECEIVED",
+      "reference": "GBR-28C0E6502D68",
+      "timestamp": "2026-09-29T03:12:29+00:00",
+      "details": {
+        "amount_cents": 5000000,
+        "account_id": "GB-NAT-001"
+      }
+    },
+    {
+      "event_id": "AUD-8E6CB70E58DB",
+      "actor_id": "N-ZA-000001",
+      "action": "ALLOCATION_CREATED",
+      "reference": "ALLOC-97B7344DED",
+      "timestamp": "2026-09-29T03:13:25+00:00",
+      "details": {
+        "amount_cents": 10000000,
+        "service_sector": "electricity"
+      }
+    },
+    {
+      "event_id": "AUD-CDE680203E9C",
+      "actor_id": "N-ZA-000001",
+      "action": "TRANSFER_INITIATED",
+      "reference": "GBT-3B90F7B26857",
+      "timestamp": "2026-09-29T03:14:01+00:00",
+      "details": {
+        "amount_cents": 10000000,
+        "policy_flag_count": 1
+      }
+    },
+    {
+      "event_id": "AUD-0A6EDF4274BD",
+      "actor_id": "N-ZA-000001",
+      "action": "TRANSFER_INITIATED",
+      "reference": "GBT-E14B826BEAD5",
+      "timestamp": "2026-09-29T03:14:30+00:00",
+      "details": {
+        "amount_cents": 10000000,
+        "policy_flag_count": 2
+      }
+    },
+    {
+      "event_id": "AUD-79FD2FB5A775",
+      "actor_id": "N-ZA-000001",
+      "action": "TRANSFER_INITIATED",
+      "reference": "GBT-53A796C5B263",
+      "timestamp": "2026-09-29T03:14:41+00:00",
+      "details": {
+        "amount_cents": 10000000,
+        "policy_flag_count": 2
+      }
+    },
+    {
+      "event_id": "AUD-1F91E796A76A",
+      "actor_id": "N-ZA-000001",
+      "action": "TRANSFER_INITIATED",
+      "reference": "GBT-810DC3797170",
+      "timestamp": "2026-09-29T03:16:15+00:00",
+      "details": {
+        "amount_cents": 10000000,
+        "policy_flag_count": 2
+      }
+    },
+    {
+      "event_id": "AUD-BEDD646FBE1A",
+      "actor_id": "N-ZA-000001",
+      "action": "TRANSFER_INITIATED",
+      "reference": "GBT-6083321926E9",
+      "timestamp": "2026-09-29T03:16:35+00:00",
+      "details": {
+        "amount_cents": 10000000,
+        "policy_flag_count": 1
+      }
+    }
+  ]
+}

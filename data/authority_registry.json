@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "actors": [
+    {
+      "actor_id": "N-ZA-000001",
+      "display_name": "National Funding Officer",
+      "profile_type": "national_official",
+      "role": "national_funding_officer",
+      "institution_id": "NAT-FINANCE",
+      "scope": {
+        "level": "national",
+        "code": "ZA"
+      },
+      "status": "active",
+      "granted_permissions": [],
+      "revoked_permissions": []
+    },
+    {
+      "actor_id": "N-ZA-000002",
+      "display_name": "National Finance Approver",
+      "profile_type": "national_official",
+      "role": "national_finance_approver",
+      "institution_id": "NAT-FINANCE",
+      "scope": {
+        "level": "national",
+        "code": "ZA"
+      },
+      "status": "active",
+      "granted_permissions": [],
+      "revoked_permissions": []
+    },
+    {
+      "actor_id": "N-ZA-000003",
+      "display_name": "National Public Finance Reviewer",
+      "profile_type": "national_official",
+      "role": "public_finance_reviewer",
+      "institution_id": "NAT-FINANCE",
+      "scope": {
+        "level": "national",
+        "code": "ZA"
+      },
+      "status": "active",
+      "granted_permissions": [],
+      "revoked_permissions": []
+    },
+    {
+      "actor_id": "P-LP-000001",
+      "display_name": "Limpopo Finance Officer",
+      "profile_type": "provincial_official",
+      "role": "provincial_finance_officer",
+      "institution_id": "PROV-LIM",
+      "scope": {
+        "level": "province",
+        "code": "LP"
+      },
+      "status": "active",
+      "granted_permissions": [],
+      "revoked_permissions": []
+    },
+    {
+      "actor_id": "P-LP-000002",
+      "display_name": "Limpopo Finance Approver",
+      "profile_type": "provincial_official",
+      "role": "provincial_finance_approver",
+      "institution_id": "PROV-LIM",
+      "scope": {
+        "level": "province",
+        "code": "LP"
+      },
+      "status": "active",
+      "granted_permissions": [],
+      "revoked_permissions": []
+    },
+    {
+      "actor_id": "P-LP-000003",
+      "display_name": "Limpopo Public Finance Reviewer",
+      "profile_type": "provincial_official",
+      "role": "public_finance_reviewer",
+      "institution_id": "PROV-LIM",
+      "scope": {
+        "level": "province",
+        "code": "LP"
+      },
+      "status": "active",
+      "granted_permissions": [],
+      "revoked_permissions": []
+    },
+    {
+      "actor_id": "D-VHE-000001",
+      "display_name": "Vhembe Finance Officer",
+      "profile_type": "district_official",
+      "role": "district_finance_officer",
+      "institution_id": "DIST-VHE",
+      "scope": {
+        "level": "district",
+        "code": "VHE"
+      },
+      "status": "active",
+      "granted_permissions": [],
+      "revoked_permissions": []
+    },
+    {
+      "actor_id": "D-VHE-000002",
+      "display_name": "Vhembe Finance Approver",
+      "profile_type": "district_official",
+      "role": "district_finance_approver",
+      "institution_id": "DIST-VHE",
+      "scope": {
+        "level": "district",
+        "code": "VHE"
+      },
+      "status": "active",
+      "granted_permissions": [],
+      "revoked_permissions": []
+    },
+    {
+      "actor_id": "D-VHE-000003",
+      "display_name": "Vhembe Public Finance Reviewer",
+      "profile_type": "district_official",
+      "role": "public_finance_reviewer",
+      "institution_id": "DIST-VHE",
+      "scope": {
+        "level": "district",
+        "code": "VHE"
+      },
+      "status": "active",
+      "granted_permissions": [],
+      "revoked_permissions": []
+    },
+    {
+      "actor_id": "M-THU-000001",
+      "display_name": "Thulamela Finance Officer",
+      "profile_type": "municipal_official",
+      "role": "municipal_finance_officer",
+      "institution_id": "MUN-THU",
+      "scope": {
+        "level": "municipality",
+        "code": "THU"
+      },
+      "status": "active",
+      "granted_permissions": [],
+      "revoked_permissions": []
+    },
+    {
+      "actor_id": "M-THU-000003",
+      "display_name": "Thulamela Public Finance Reviewer",
+      "profile_type": "municipal_official",
+      "role": "public_finance_reviewer",
+      "institution_id": "MUN-THU",
+      "scope": {
+        "level": "municipality",
+        "code": "THU"
+      },
+      "status": "active",
+      "granted_permissions": [],
+      "revoked_permissions": []
+    },
+    {
+      "actor_id": "M-THU-000002",
+      "display_name": "Thulamela Municipal Manager",
+      "profile_type": "municipal_official",
+      "role": "municipal_manager",
+      "institution_id": "MUN-THU",
+      "scope": {
+        "level": "municipality",
+        "code": "THU"
+      },
+      "status": "active",
+      "granted_permissions": [],
+      "revoked_permissions": []
+    },
+    {
+      "actor_id": "C-THU-W18-000001",
+      "display_name": "Ward 18 Councillor",
+      "profile_type": "councillor",
+      "role": "ward_councillor",
+      "institution_id": "MUN-THU",
+      "scope": {
+        "level": "ward",
+        "code": "THU-W18"
+      },
+      "status": "active",
+      "granted_permissions": [],
+      "revoked_permissions": []
+    },
+    {
+      "actor_id": "R-THU-000001",
+      "display_name": "Registered Resident",
+      "profile_type": "citizen",
+      "role": "citizen",
+      "institution_id": null,
+      "scope": {
+        "level": "community",
+        "code": "THU"
+      },
+      "status": "active",
+      "granted_permissions": [],
+      "revoked_permissions": []
+    }
+  ]
+}

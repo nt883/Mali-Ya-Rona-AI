@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Mali Ya Rona | Public Expenditure Monitoring
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/styles.css"
+    >
+</head>
+
+<body>
+
+    <!-- SOUTH AFRICAN IDENTITY STRIP -->
+
+    <div
+        class="sa-identity-strip"
+        aria-hidden="true"
+    >
+        <span class="strip-green"></span>
+        <span class="strip-gold"></span>
+        <span class="strip-red"></span>
+        <span class="strip-blue"></span>
+    </div>
+
+
+    <!-- UTILITY HEADER -->
+
+    <div class="utility-bar">
+
+        <div class="utility-inner">
+
+            <span>
+                Public Money. Public Proof.
+            </span>
+
+            <span>
+                Evidence before conclusions.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN HEADER -->
+
+    <header class="government-header">
+
+        <div class="brand-area">
+
+            <div class="brand-mark">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M12 3L4 7v5c0 5 3.4 8.4 8 9.8 4.6-1.4 8-4.8 8-9.8V7l-8-4Z"
+                    />
+                    <path
+                        d="M8 12h8M9 9h6M10 15h4"
+                    />
+                </svg>
+
+            </div>
+
+
+            <div>
+
+                <p class="department-label">
+                    PUBLIC ACCOUNTABILITY PLATFORM
+                </p>
+
+                <h1>
+                    Mali Ya Rona
+                </h1>
+
+                <p class="brand-description">
+                    Public Expenditure Monitoring
+                    & Accountability System
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-status">
+
+            <div class="status-block">
+
+                <span class="status-title">
+                    Data source
+                </span>
+
+                <span
+                    id="modeBadge"
+                    class="data-badge"
+                >
+                    Connecting…
+                </span>
+
+            </div>
+
+
+            <a
+                href="/about"
+                class="about-project-button"
+            >
+                About this project
+            </a>
+
+
+            <button
+                id="refreshButton"
+                class="primary-action"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M20 6v5h-5"
+                    />
+                    <path
+                        d="M18.5 9A7 7 0 1 0 19 15"
+                    />
+                </svg>
+
+                Rescan data
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="main-navigation">
+
+        <div class="nav-inner">
+
+            <a
+                href="#overview"
+                class="nav-link active"
+            >
+                Dashboard
+            </a>
+
+            <a
+                href="#funding"
+                class="nav-link"
+            >
+                Funding Trace
+            </a>
+
+            <a
+                href="#projects"
+                class="nav-link"
+            >
+                Projects
+            </a>
+
+            <a
+                href="#projects"
+                class="nav-link"
+            >
+                Review Queue
+            </a>
+
+            <a
+                href="/govbank"
+                class="nav-link"
+            >
+                GovBank
+            </a>
+
+            <a
+                href="/about"
+                class="nav-link"
+            >
+                About this project
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- BREADCRUMB -->
+
+    <div class="breadcrumb-bar">
+
+        <div class="breadcrumb-inner">
+
+            <span>
+                Home
+            </span>
+
+            <span class="breadcrumb-arrow">
+                ›
+            </span>
+
+            <strong>
+                Monitoring Dashboard
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <main>
+
+        <!-- OVERVIEW -->
+
+        <section
+            id="overview"
+            class="page-intro"
+        >
+
+            <p class="section-kicker">
+                MONITORING OVERVIEW
+            </p>
+
+            <h2>
+                Public expenditure monitoring
+            </h2>
+
+            <p>
+                Review project expenditure,
+                delivery records and reported
+                discrepancies from connected data.
+            </p>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="summary-grid">
+
+            <article class="summary-card">
+
+                <div class="summary-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 5h16v14H4z"/>
+                        <path d="M8 9h8M8 13h8M8 17h4"/>
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <span class="summary-label">
+                        Projects monitored
+                    </span>
+
+                    <strong
+                        id="projectCount"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article class="summary-card">
+
+                <div class="summary-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 3v18"/>
+                        <path d="M5 7h14"/>
+                        <path d="M7 7v4h10V7"/>
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <span class="summary-label">
+                        Review flags
+                    </span>
+
+                    <strong
+                        id="flagCount"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="summary-card priority-high"
+            >
+
+                <div class="summary-icon alert">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 3 2.8 20h18.4L12 3Z"/>
+                        <path d="M12 9v5M12 17h.01"/>
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <span class="summary-label">
+                        High-priority reviews
+                    </span>
+
+                    <strong
+                        id="highCount"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="summary-card priority-medium"
+            >
+
+                <div class="summary-icon clock">
+
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M12 7v5l3 2"/>
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <span class="summary-label">
+                        Medium priority
+                    </span>
+
+                    <strong
+                        id="mediumCount"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="summary-card priority-clear"
+            >
+
+                <div class="summary-icon success">
+
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="m8 12 2.5 2.5L16 9"/>
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <span class="summary-label">
+                        No current flags
+                    </span>
+
+                    <strong
+                        id="clearCount"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- FUNDING TRACE -->
+
+        <section
+            id="funding"
+            class="government-panel"
+        >
+
+            <div class="panel-titlebar">
+
+                <div class="panel-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="5" cy="5" r="2"/>
+                        <circle cx="19" cy="8" r="2"/>
+                        <circle cx="19" cy="18" r="2"/>
+                        <circle cx="10" cy="13" r="2"/>
+                        <path d="M7 6l10 2M6 7l3 5M12 13l5-4M12 14l5 3"/>
+                    </svg>
+
+                </div>
+
+
+                <div>
+
+                    <span class="panel-category">
+                        FUNDING TRACE
+                    </span>
+
+                    <h2>
+                        Public money flow
+                    </h2>
+
+                </div>
+
+
+                <span
+                    id="flowDate"
+                    class="panel-date"
+                ></span>
+
+            </div>
+
+
+            <div
+                id="flowNote"
+                class="information-notice"
+            ></div>
+
+
+            <div class="flow-scroll">
+
+                <svg
+                    id="moneyFlowSvg"
+                    aria-label="Public funding flow"
+                ></svg>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECT REVIEW -->
+
+        <section
+            id="projects"
+            class="government-panel"
+        >
+
+            <div class="panel-titlebar">
+
+                <div class="panel-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 4h16v16H4z"/>
+                        <path d="M8 8h8M8 12h8M8 16h5"/>
+                    </svg>
+
+                </div>
+
+
+                <div class="panel-heading-text">
+
+                    <span class="panel-category">
+                        PROJECT MONITORING
+                    </span>
+
+                    <h2>
+                        Review queue
+                    </h2>
+
+                </div>
+
+
+                <div class="filters">
+
+                    <button
+                        class="filter active"
+                        data-filter="all"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="high"
+                    >
+                        High
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="medium"
+                    >
+                        Medium
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="none"
+                    >
+                        Clear
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="projectGrid"
+                class="project-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- DETAIL INSPECTOR -->
+
+        <section
+            id="detailPanel"
+            class="government-panel detail-panel hidden"
+        >
+
+            <button
+                id="closeDetail"
+                class="close-button"
+                aria-label="Close project details"
+            >
+                ×
+            </button>
+
+
+            <span class="panel-category">
+                PROJECT RECORD
+            </span>
+
+            <h2
+                id="detailTitle"
+            ></h2>
+
+
+            <div
+                id="branchPath"
+                class="branch-path"
+            ></div>
+
+
+            <div
+                id="detailContent"
+            ></div>
+
+        </section>
+
+
+        <!-- LEGAL / INFORMATION NOTICE -->
+
+        <aside class="government-notice">
+
+            <div class="notice-icon">
+
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M12 11v6M12 7h.01"/>
+                </svg>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Important information
+                </strong>
+
+                <p>
+                    Review flags identify records
+                    that may require further
+                    examination. They do not,
+                    by themselves, establish
+                    corruption, fraud, theft or
+                    contractual wrongdoing.
+                </p>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <footer class="government-footer">
+
+        <div>
+
+            <strong>
+                Mali Ya Rona
+            </strong>
+
+            <p>
+                Public Money. Public Proof.
+            </p>
+
+        </div>
+
+
+        <div class="footer-right">
+
+            <span>
+                Hackathon prototype
+            </span>
+
+            <span>
+                Synthetic demonstration data
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <script
+        src="/static/app.js"
+    ></script>
+
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+That replaces the secret por trick with something defensible.
+To enable developer mode locally later:
+Terminal::
+
+export MYR_ENV=development
+export MYR_DEV_MODE=1

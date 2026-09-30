@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        GovBank | Government Financial Network
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/govbank.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="sa-strip">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+
+<header class="bank-header">
+
+    <div class="bank-brand">
+
+        <div class="bank-symbol">
+            GB
+        </div>
+
+
+        <div>
+
+            <span class="bank-kicker">
+                GOVERNMENT FINANCIAL NETWORK
+            </span>
+
+            <h1>
+                GovBank
+            </h1>
+
+            <p>
+                Public Finance Transaction Simulator
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="environment-badge">
+
+        PROTOTYPE SIMULATION
+
+    </div>
+
+</header>
+
+
+<nav class="bank-navigation">
+
+    <a
+        href="/govbank"
+        class="active"
+    >
+        Accounts
+    </a>
+
+    <a href="#transactions">
+        Transactions
+    </a>
+
+    <a href="#allocations">
+        Allocations
+    </a>
+
+    <a href="/">
+        Mali Ya Rona Monitor
+    </a>
+
+</nav>
+
+
+<main>
+
+
+<!-- ACTOR -->
+
+
+<section class="identity-panel">
+
+    <div>
+
+        <span class="section-label">
+            ACTIVE OFFICIAL
+        </span>
+
+        <h2>
+            Acting credential
+        </h2>
+
+        <p>
+            Select a prototype official whose
+            permissions will be used for the
+            next operation.
+        </p>
+
+    </div>
+
+
+    <div class="actor-selector">
+
+        <select id="actorSelect">
+
+            <option value="">
+                Loading officials…
+            </option>
+
+        </select>
+
+
+        <div
+            id="actorDetails"
+            class="actor-details"
+        >
+            No official selected
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ACCOUNT SUMMARY -->
+
+
+<section>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                GOVERNMENT ACCOUNTS
+            </span>
+
+            <h2>
+                Public finance accounts
+            </h2>
+
+        </div>
+
+
+        <button
+            id="refreshBank"
+            class="secondary-button"
+        >
+            Refresh
+        </button>
+
+    </div>
+
+
+    <div
+        id="accountGrid"
+        class="account-grid"
+    ></div>
+
+</section>
+
+
+
+<!-- TRANSACTION ACTIONS -->
+
+
+<section class="actions-grid">
+
+
+    <!-- RECEIVE FUNDS -->
+
+
+    <article class="action-panel">
+
+        <div class="action-number">
+            01
+        </div>
+
+        <h3>
+            Receive public funds
+        </h3>
+
+        <p>
+            Record an authorised funding
+            receipt into a government account.
+        </p>
+
+
+        <label>
+            Receiving account
+
+            <select
+                id="receiptAccount"
+            ></select>
+
+        </label>
+
+
+        <label>
+            Amount (Rand)
+
+            <input
+                id="receiptAmount"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="10000000"
+            >
+
+        </label>
+
+
+        <label>
+            Funding source
+
+            <input
+                id="receiptSource"
+                type="text"
+                value="Prototype National Revenue"
+            >
+
+        </label>
+
+
+        <label>
+            Source reference
+
+            <input
+                id="receiptReference"
+                type="text"
+                placeholder="FUND-2026-001"
+            >
+
+        </label>
+
+
+        <button
+            id="receiveFundsButton"
+            class="primary-button"
+        >
+            Record funding receipt
+        </button>
+
+    </article>
+
+
+
+    <!-- CREATE ALLOCATION -->
+
+
+    <article
+        class="action-panel"
+        id="allocations"
+    >
+
+        <div class="action-number">
+            02
+        </div>
+
+        <h3>
+            Create allocation
+        </h3>
+
+        <p>
+            Define the purpose and authorised
+            movement path for public money.
+        </p>
+
+
+        <label>
+            Source account
+
+            <select
+                id="allocationSource"
+            ></select>
+
+        </label>
+
+
+        <label>
+            Allocation title
+
+            <input
+                id="allocationTitle"
+                type="text"
+                placeholder="Limpopo Water Infrastructure"
+            >
+
+        </label>
+
+
+        <label>
+            Amount (Rand)
+
+            <input
+                id="allocationAmount"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="4000000"
+            >
+
+        </label>
+
+
+        <label>
+            Service sector
+
+            <select
+                id="allocationSector"
+            >
+
+                <option value="water">
+                    Water
+                </option>
+
+                <option value="roads">
+                    Roads
+                </option>
+
+                <option value="electricity">
+                    Electricity
+                </option>
+
+                <option value="waste">
+                    Waste
+                </option>
+
+                <option value="housing">
+                    Housing
+                </option>
+
+                <option value="health">
+                    Health infrastructure
+                </option>
+
+                <option value="education">
+                    Education infrastructure
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+            Location scope
+
+            <input
+                id="allocationLocation"
+                type="text"
+                placeholder="Limpopo / Vhembe"
+            >
+
+        </label>
+
+
+        <button
+            id="createAllocationButton"
+            class="primary-button"
+        >
+            Create allocation
+        </button>
+
+    </article>
+
+
+
+    <!-- TRANSFER -->
+
+
+    <article class="action-panel">
+
+        <div class="action-number">
+            03
+        </div>
+
+        <h3>
+            Send allocation
+        </h3>
+
+        <p>
+            Initiate a government-to-government
+            transfer. A separate authorised
+            official must approve it.
+        </p>
+
+
+        <label>
+            Allocation
+
+            <select
+                id="transferAllocation"
+            ></select>
+
+        </label>
+
+
+        <label>
+            From account
+
+            <select
+                id="transferFrom"
+            ></select>
+
+        </label>
+
+
+        <label>
+            To account
+
+            <select
+                id="transferTo"
+            ></select>
+
+        </label>
+
+
+        <label>
+            Amount (Rand)
+
+            <input
+                id="transferAmount"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="3000000"
+            >
+
+        </label>
+
+
+        <label>
+            Purpose
+
+            <input
+                id="transferPurpose"
+                type="text"
+                placeholder="Water infrastructure transfer"
+            >
+
+        </label>
+
+
+        <label>
+            Sector
+
+            <select
+                id="transferSector"
+            >
+
+                <option value="water">
+                    Water
+                </option>
+
+                <option value="roads">
+                    Roads
+                </option>
+
+                <option value="electricity">
+                    Electricity
+                </option>
+
+                <option value="waste">
+                    Waste
+                </option>
+
+                <option value="housing">
+                    Housing
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <button
+            id="sendTransferButton"
+            class="primary-button"
+        >
+            Initiate transfer
+        </button>
+
+    </article>
+
+</section>
+
+
+
+<!-- STATUS MESSAGE -->
+
+
+<div
+    id="messageBox"
+    class="message-box hidden"
+></div>
+
+
+
+<!-- PENDING -->
+
+
+<section class="bank-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                MAKER-CHECKER CONTROL
+            </span>
+
+            <h2>
+                Awaiting approval
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="pendingTransfers"
+        class="transaction-list"
+    ></div>
+
+</section>
+
+<section
+    class="bank-section"
+    id="reviewDesk"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                EXCEPTION MANAGEMENT
+            </span>
+
+            <h2>
+                Review desk
+            </h2>
+
+            <p>
+                Transactions held by the
+                monitoring rules appear here
+                before they may proceed.
+            </p>
+
+        </div>
+
+
+        <div
+            id="reviewCountBadge"
+            class="review-count-badge"
+        >
+            0 awaiting review
+        </div>
+
+    </div>
+
+
+    <div
+        id="reviewTransfers"
+        class="review-grid"
+    ></div>
+
+</section>
+
+
+
+<!-- STATEMENT -->
+
+
+<section
+    id="transactions"
+    class="bank-section"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                AUDITABLE ACTIVITY
+            </span>
+
+            <h2>
+                Transaction statement
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="statement-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Reference
+                    </th>
+
+                    <th>
+                        Type
+                    </th>
+
+                    <th>
+                        From
+                    </th>
+
+                    <th>
+                        To
+                    </th>
+
+                    <th>
+                        Amount
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>
+                        Review
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody
+                id="transactionTable"
+            ></tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    <strong>
+        GovBank
+    </strong>
+
+    <span>
+        Prototype public-finance simulation —
+        no real money is transferred.
+    </span>
+
+</footer>
+
+
+<script
+    src="/static/govbank.js"
+></script>
+
+
+</body>
+
+</html>

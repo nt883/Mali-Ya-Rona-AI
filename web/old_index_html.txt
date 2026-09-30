@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Mali Ya Rona Monitor
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/styles.css"
+    >
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div>
+            <p class="eyebrow">
+                EXTERNAL ACCOUNTABILITY ENGINE
+            </p>
+
+            <h1>
+                Mali Ya Rona Monitor
+            </h1>
+
+            <p class="subtitle">
+                Public Money.
+                Public Proof.
+                Evidence Before Conclusions.
+            </p>
+        </div>
+
+        <div class="topbar-actions">
+
+            <span
+                id="modeBadge"
+                class="mode-badge"
+            >
+                Loading…
+            </span>
+
+            <button
+                id="refreshButton"
+                class="refresh-button"
+            >
+                Rescan external data
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- SUMMARY -->
+
+        <section class="summary-grid">
+
+            <article class="summary-card">
+
+                <span class="summary-label">
+                    Projects
+                </span>
+
+                <strong
+                    id="projectCount"
+                >
+                    -
+                </strong>
+
+            </article>
+
+
+            <article class="summary-card">
+
+                <span class="summary-label">
+                    Review flags
+                </span>
+
+                <strong
+                    id="flagCount"
+                >
+                    -
+                </strong>
+
+            </article>
+
+
+            <article
+                class="
+                    summary-card
+                    danger-card
+                "
+            >
+
+                <span class="summary-label">
+                    High priority
+                </span>
+
+                <strong
+                    id="highCount"
+                >
+                    -
+                </strong>
+
+            </article>
+
+
+            <article
+                class="
+                    summary-card
+                    warning-card
+                "
+            >
+
+                <span class="summary-label">
+                    Medium priority
+                </span>
+
+                <strong
+                    id="mediumCount"
+                >
+                    -
+                </strong>
+
+            </article>
+
+
+            <article
+                class="
+                    summary-card
+                    clear-card
+                "
+            >
+
+                <span class="summary-label">
+                    Clear projects
+                </span>
+
+                <strong
+                    id="clearCount"
+                >
+                    -
+                </strong>
+
+            </article>
+
+        </section>
+
+
+        <!-- FUNDING NETWORK -->
+
+        <section class="panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        FUNDING TRACE
+                    </p>
+
+                    <h2>
+                        Public money branch
+                    </h2>
+
+                </div>
+
+                <p
+                    id="flowDate"
+                    class="muted"
+                ></p>
+
+            </div>
+
+
+            <p
+                id="flowNote"
+                class="flow-note"
+            ></p>
+
+
+            <div class="flow-scroll">
+
+                <svg
+                    id="moneyFlowSvg"
+                    aria-label="
+                        Public funding flow
+                    "
+                ></svg>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECT MONITOR -->
+
+        <section class="panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        LIVE REVIEW QUEUE
+                    </p>
+
+                    <h2>
+                        Project monitoring
+                    </h2>
+
+                </div>
+
+                <div class="filters">
+
+                    <button
+                        class="
+                            filter active
+                        "
+                        data-filter="all"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="high"
+                    >
+                        High
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="medium"
+                    >
+                        Medium
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="none"
+                    >
+                        Clear
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="projectGrid"
+                class="project-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- DETAIL -->
+
+        <section
+            id="detailPanel"
+            class="panel detail-panel hidden"
+        >
+
+            <button
+                id="closeDetail"
+                class="close-button"
+            >
+                ×
+            </button>
+
+            <p class="section-label">
+                BRANCH INSPECTOR
+            </p>
+
+            <h2
+                id="detailTitle"
+            ></h2>
+
+
+            <div
+                id="branchPath"
+                class="branch-path"
+            ></div>
+
+
+            <div
+                id="detailContent"
+            ></div>
+
+        </section>
+
+
+        <section class="disclaimer">
+
+            <strong>
+                Review flag ≠ finding of wrongdoing
+            </strong>
+
+            <p>
+                The monitor identifies unusual
+                patterns requiring review.
+                A flag does not by itself prove
+                corruption, theft, fraud or
+                contractual breach.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <script
+        src="/static/app.js"
+    ></script>
+
+</body>
+
+</html>

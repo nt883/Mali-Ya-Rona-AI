@@ -1,0 +1,691 @@
+function renderMoneyFlow(
+    flow
+) {
+
+    const svg =
+        document.getElementById(
+            "moneyFlowSvg"
+        );
+
+
+    svg.innerHTML = "";
+
+
+    if (!flow.available) {
+
+        svg.setAttribute(
+            "height",
+            "100"
+        );
+
+        return;
+    }
+
+
+    document.getElementById(
+        "flowDate"
+    ).textContent =
+        `Data date: ${flow.as_of}`;
+
+
+    document.getElementById(
+        "flowNote"
+    ).textContent =
+        flow.route_note || "";
+
+
+    const levels = [
+    "national",
+    "provincial",
+    "district",
+    "local",
+    "supplier"
+];
+
+
+function normalizeGovernmentLevel(level) {
+
+    const aliases = {
+
+        national:
+            "national",
+
+        province:
+            "provincial",
+
+        provincial:
+            "provincial",
+
+        district:
+            "district",
+
+        municipality:
+            "local",
+
+        municipal:
+            "local",
+
+        local:
+            "local",
+
+        metro:
+            "local",
+
+        supplier:
+            "supplier"
+    };
+
+
+    return (
+        aliases[level]
+        || level
+    );
+}
+
+
+    const grouped = {};
+
+    levels.forEach(
+        level => {
+            grouped[level] = [];
+        }
+    );
+
+
+    flow.nodes.forEach(
+        node => {
+
+            const normalizedLevel =
+                normalizeGovernmentLevel(
+                    node.level
+                );
+
+
+            if (
+                !grouped[
+                    normalizedLevel
+                ]
+            ) {
+
+                grouped[
+                    normalizedLevel
+                ] = [];
+            }
+
+
+            grouped[
+                normalizedLevel
+            ].push(
+                node
+            );
+        }
+    );
+
+
+    const maximumRows =
+        Math.max(
+            ...Object.values(
+                grouped
+            ).map(
+                list => list.length
+            )
+        );
+
+
+    const svgWidth = 1100;
+
+    const svgHeight =
+        Math.max(
+            480,
+            maximumRows * 115 + 100
+        );
+
+
+    svg.setAttribute(
+        "viewBox",
+        `0 0 ${svgWidth} ${svgHeight}`
+    );
+
+    svg.setAttribute(
+        "height",
+        svgHeight
+    );
+
+
+    const positions = {};
+
+
+    levels.forEach(
+        (level, levelIndex) => {
+
+            const nodes =
+                grouped[level] || [];
+
+            const x =
+                60
+                + levelIndex * 270;
+
+
+            nodes.forEach(
+                (node, index) => {
+
+                    const spacing =
+                        svgHeight /
+                        (
+                            nodes.length
+                            + 1
+                        );
+
+                    const y =
+                        spacing
+                        * (index + 1);
+
+
+                    positions[
+                        node.id
+                    ] = {
+                        x,
+                        y
+                    };
+                }
+            );
+        }
+    );
+
+
+    // --------------------------------------------------
+    // CONNECTIONS + MONEY FLOW ANIMATION
+    // --------------------------------------------------
+
+    flow.transfers.forEach(
+        (transfer, transferIndex) => {
+
+            const from =
+                positions[
+                    transfer.from_id
+                ];
+
+            const to =
+                positions[
+                    transfer.to_id
+                ];
+
+
+            if (!from || !to) {
+                return;
+            }
+
+
+            const startX =
+                from.x + 190;
+
+            const startY =
+                from.y;
+
+            const endX =
+                to.x;
+
+            const endY =
+                to.y;
+
+
+            const curve =
+                (
+                    endX
+                    - startX
+                ) / 2;
+
+
+            const pathData =
+                `M ${startX} ${startY}
+                C ${startX + curve} ${startY},
+                ${endX - curve} ${endY},
+                ${endX} ${endY}`;
+
+
+            const isReview =
+                transfer.status
+                === "review";
+
+
+            // -------------------------------------------
+            // Main animated transfer line
+            // -------------------------------------------
+
+            const path =
+                createSvgElement(
+                    "path",
+                    {
+                        d:
+                            pathData,
+
+                        class:
+                            isReview
+                            ? "flow-link review"
+                            : "flow-link"
+                    }
+                );
+
+
+            const title =
+                createSvgElement(
+                    "title"
+                );
+
+
+            const sentAmount =
+                transfer
+                .amount_sent_cents
+                ?? transfer
+                .amount_cents
+                ?? 0;
+
+
+            title.textContent =
+                `${
+                    transfer.purpose
+                    || "Public funds transfer"
+                }
+    ${formatMoneyFromCents(sentAmount)}
+    ${
+        isReview
+        ? "Requires review"
+        : "Matched"
+    }`;
+
+
+            path.appendChild(
+                title
+            );
+
+
+            svg.appendChild(
+                path
+            );
+
+            const amountLabel =
+                createSvgElement(
+                    "text",
+                    {
+                        x:
+                            (
+                                startX
+                                + endX
+                            ) / 2,
+
+                        y:
+                            (
+                                startY
+                                + endY
+                            ) / 2
+                            - 10,
+
+                        class:
+                            isReview
+                            ? "flow-amount review"
+                            : "flow-amount"
+                    }
+                );
+
+
+            amountLabel.textContent =
+                formatMoneyFromCents(
+                    sentAmount
+                );
+
+
+            svg.appendChild(
+                amountLabel
+            );
+
+            if (isReview) {
+
+                const reviewLabel =
+                    createSvgElement(
+                        "text",
+                        {
+                            x:
+                                (
+                                    startX
+                                    + endX
+                                ) / 2,
+
+                            y:
+                                (
+                                    startY
+                                    + endY
+                                ) / 2
+                                + 8,
+
+                            class:
+                                "flow-review-label"
+                        }
+                    );
+
+
+                reviewLabel.textContent =
+                    "REVIEW REQUIRED";
+
+
+                svg.appendChild(
+                    reviewLabel
+                );
+            }
+
+
+            // -------------------------------------------
+            // Moving money packet
+            // -------------------------------------------
+
+            const packet =
+                createSvgElement(
+                    "circle",
+                    {
+                        r:
+                            isReview
+                            ? 7
+                            : 6,
+
+                        class:
+                            isReview
+                            ? "money-packet review"
+                            : "money-packet"
+                    }
+                );
+
+
+            const animation =
+                createSvgElement(
+                    "animateMotion",
+                    {
+                        path:
+                            pathData,
+
+                        dur:
+                            isReview
+                            ? "2.6s"
+                            : `${
+                                3.3
+                                + (
+                                    transferIndex
+                                    % 3
+                                )
+                                * .5
+                            }s`,
+
+                        repeatCount:
+                            "indefinite",
+
+                        begin:
+                            `${
+                                transferIndex
+                                * .35
+                            }s`
+                    }
+                );
+
+
+            packet.appendChild(
+                animation
+            );
+
+
+            svg.appendChild(
+                packet
+            );
+
+
+            // -------------------------------------------
+            // Second packet so routes feel continuous
+            // -------------------------------------------
+
+            if (!isReview) {
+
+                const secondPacket =
+                    createSvgElement(
+                        "circle",
+                        {
+                            r: 4,
+
+                            class:
+                                "money-packet"
+                        }
+                    );
+
+
+                const secondAnimation =
+                    createSvgElement(
+                        "animateMotion",
+                        {
+                            path:
+                                pathData,
+
+                            dur:
+                                `${
+                                    3.3
+                                    + (
+                                        transferIndex
+                                        % 3
+                                    )
+                                    * .5
+                                }s`,
+
+                            repeatCount:
+                                "indefinite",
+
+                            begin:
+                                `${
+                                    1.6
+                                    + transferIndex
+                                    * .35
+                                }s`
+                        }
+                    );
+
+
+                secondPacket.appendChild(
+                    secondAnimation
+                );
+
+
+                svg.appendChild(
+                    secondPacket
+                );
+            }
+
+        }
+    );
+
+    // NODES
+
+    flow.nodes.forEach(
+        node => {
+
+            const position =
+                positions[node.id];
+
+
+            if (!position) {
+                return;
+            }
+
+
+            const group =
+                createSvgElement(
+                    "g"
+                );
+
+
+            const box =
+                createSvgElement(
+                    "rect",
+                    {
+                        x:
+                            position.x,
+
+                        y:
+                            position.y - 38,
+
+                        width:
+                            190,
+
+                        height:
+                            76,
+
+                        class:
+                            "flow-node-box"
+                    }
+                );
+
+
+            group.appendChild(
+                box
+            );
+
+
+            const level =
+                createSvgElement(
+                    "text",
+                    {
+                        x:
+                            position.x
+                            + 10,
+
+                        y:
+                            position.y
+                            - 18,
+
+                        class:
+                            "flow-node-level"
+                    }
+                );
+
+
+            level.textContent =
+                node.level;
+
+
+            group.appendChild(
+                level
+            );
+
+
+            const lines =
+                splitNodeName(
+                    node.name
+                );
+
+
+            lines.forEach(
+                (line, index) => {
+
+                    if (!line) {
+                        return;
+                    }
+
+
+                    const text =
+                        createSvgElement(
+                            "text",
+                            {
+                                x:
+                                    position.x
+                                    + 10,
+
+                                y:
+                                    position.y
+                                    + (
+                                        index * 15
+                                    ),
+
+                                class:
+                                    "flow-node-name"
+                            }
+                        );
+
+
+                    text.textContent =
+                        line;
+
+
+                    group.appendChild(
+                        text
+                    );
+                }
+            );
+
+
+            const amount =
+                createSvgElement(
+                    "text",
+                    {
+                        x:
+                            position.x
+                            + 10,
+
+                        y:
+                            position.y
+                            + 28,
+
+                        class:
+                            "flow-node-money"
+                    }
+                );
+
+
+            const nodeDisplayAmount =
+                (
+                    node.funds_in_cents
+                    > 0
+                )
+                ? node.funds_in_cents
+                : (
+                    node.funds_out_cents
+                    || 0
+                );
+
+
+            amount.textContent =
+                formatMoneyFromCents(
+                    nodeDisplayAmount
+                );
+
+
+            group.appendChild(
+                amount
+            );
+
+
+            const title =
+                createSvgElement(
+                    "title"
+                );
+
+
+            title.textContent =
+                `${node.name}
+            Received: ${
+                formatMoneyFromCents(
+                    node.funds_in_cents
+                    || 0
+                )
+            }
+            Sent: ${
+                formatMoneyFromCents(
+                    node.funds_out_cents
+                    || 0
+                )
+            }`;
+
+
+            group.appendChild(
+                title
+            );
+
+
+            svg.appendChild(
+                group
+            );
+        }
+    );
+}
