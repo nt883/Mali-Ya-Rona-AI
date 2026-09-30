@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in | Mali Ya Rona</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/login.css">
+</head>
+<body class="login-page">
+
+    <div class="sa-identity-strip" aria-hidden="true">
+        <span class="strip-green"></span>
+        <span class="strip-gold"></span>
+        <span class="strip-red"></span>
+        <span class="strip-blue"></span>
+    </div>
+
+    <div class="utility-bar">
+        <div class="utility-inner">
+            <span>Public Money. Public Proof.</span>
+            <span>Evidence before conclusions.</span>
+        </div>
+    </div>
+
+    <main class="login-main">
+        <section class="login-card">
+
+            <span class="section-kicker">ACTING CREDENTIAL</span>
+            <h1>Sign in</h1>
+            <p class="login-lead">
+                Select the official credential you will
+                act under. Every action you take in
+                GovBank will be recorded against this
+                credential.
+            </p>
+
+            <label class="login-label">
+                Acting official
+                <select id="actorSelect">
+                    <option value="">Loading officials…</option>
+                </select>
+            </label>
+
+            <div id="actorPreview" class="actor-preview">
+                No official selected.
+            </div>
+
+            <button id="signInButton" class="primary-action login-button" disabled>
+                Sign in
+            </button>
+
+            <p class="login-note">
+                Prototype credential check only — no
+                password is required. This keeps the
+                role model intact without inventing an
+                unverified password system.
+            </p>
+
+            <div id="loginError" class="login-error hidden"></div>
+
+        </section>
+    </main>
+
+    <script src="/static/login.js"></script>
+</body>
+</html>
